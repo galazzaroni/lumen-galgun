@@ -34,7 +34,8 @@ class RegisterRequest extends RequestAbstract
         return [
             'email' => 'required|unique:users,email',
             'password' => 'required',
-            'name' => 'string'
+            'name' => 'string',
+            'lastname' => 'string'
         ];
     }
 

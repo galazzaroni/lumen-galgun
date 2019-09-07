@@ -3,9 +3,9 @@
 // resources/lang/en/messages.php
 
 return [
-    'login_failed' => 'Email address or password is incorrect.',
+    'login_failed' => 'Not authorized.',
     'welcome_subject' => 'Please verify your account',
-    'welcome_header' => 'Welcome to :Website, :Name',
+    'welcome_header' => 'Welcome to :Website, :Name :Lastname',
     'welcome_text' => 'In order to complete your registration, you will have to verify your email address.',
     'welcome_link' => 'Please click here to verify your account.',
     'password_reset_subject' => 'You have requested to reset your password',

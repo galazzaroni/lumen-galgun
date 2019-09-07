@@ -9,6 +9,6 @@
     <br/>
     {{ trans('messages.welcome_text') }}
     <br/><br/>
-    <a href="{{ config('constants.frontend_url') . '/#/verification?token='. $token }}">{{ trans('messages.welcome_link') }}</a>
+    <a href="{{ config('constants.backend_url') . '/auth/verify/'. $token }}">{{ trans('messages.welcome_link') }}</a>
 </body>
 </html>

@@ -15,5 +15,6 @@ return [
 
     'website_name' => env('WEBSITE_NAME','Galgun'),
     'website_email' => env('WEBSITE_EMAIL','galgunapp@gmail.com'),
+    'backend_url' => env('BACKEND_URL', 'http://18.223.118.94'),
     'frontend_url' => env('FRONTEND_URL', 'http://127.0.0.1:8080'),
 ];
