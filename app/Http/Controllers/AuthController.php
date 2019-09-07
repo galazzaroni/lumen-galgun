@@ -62,7 +62,7 @@ class AuthController extends Controller
      * @bodyParam email string required The email
      * @bodyParam password string required The password
      * @bodyParam name string required The name
-     * @bodyParam name string required The lastname
+     * @bodyParam lastname string required The lastname
      *
      * @param RegisterRequest $request
      * @return JsonResponse

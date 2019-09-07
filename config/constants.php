@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'website_name' => env('WEBSITE_NAME','Acme Inc'),
-    'website_email' => env('WEBSITE_EMAIL','contact@acme.inc'),
+    'website_name' => env('WEBSITE_NAME','Galgun'),
+    'website_email' => env('WEBSITE_EMAIL','galgunapp@gmail.com'),
     'frontend_url' => env('FRONTEND_URL', 'http://127.0.0.1:8080'),
 ];
