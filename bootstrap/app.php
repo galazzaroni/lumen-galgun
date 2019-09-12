@@ -101,6 +101,8 @@ $app->register(\Flipbox\LumenGenerator\LumenGeneratorServiceProvider::class);
 $app->register(Clockwork\Support\Lumen\ClockworkServiceProvider::class);
 $app->register(\Illuminate\Mail\MailServiceProvider::class);
 $app->register(Spatie\Permission\PermissionServiceProvider::class);
+//$app->register(\Aws\Laravel\AwsServiceProvider::class);
+//$app->register(Aws\Laravel\AwsServiceProvider::class);
 
 if ($app->environment() !== 'production') {
     $app->register(\Mpociot\ApiDoc\ApiDocGeneratorServiceProvider::class);

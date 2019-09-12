@@ -31,7 +31,7 @@ class AuthController extends Controller
      */
     public function getUser()
     {
-        return response()->json(['data' => Auth::user()]);
+        return response()->json(['data' => Auth::user()], 200);
     }
 
     /**
@@ -53,7 +53,7 @@ class AuthController extends Controller
             return response()->json(['message' => trans('messages.login_failed')], 401);
         }
 
-        return response()->json(['data' => ['user' => Auth::user(), 'token' => $token]]);
+        return response()->json(['data' => ['user' => Auth::user(), 'token' => $token]], 200);
     }
 
     /**
@@ -78,7 +78,7 @@ class AuthController extends Controller
 
         Mail::to($user)->send(new Welcome($user));
 
-        return response()->json(['data' => ['message' => 'Account created. Please verify via email.']]);
+        return response()->json(['data' => ['message' => 'Account created. Please verify via email.']], 200);
     }
 
     /**
@@ -98,7 +98,7 @@ class AuthController extends Controller
             return response()->json(['data' => ['message' => 'Invalid verification token']], 400);
         }
 
-        return response()->json(['data' => ['message' => 'Account has been verified']]);
+        return response()->json(['data' => ['message' => 'Account has been verified']], 200);
     }
 
     /**
@@ -121,11 +121,11 @@ class AuthController extends Controller
             Mail::to($user)->send(new PasswordReset($user));
         }
 
-        return response()->json(['data' => ['message' => 'Please check your email to reset your password.']]);
+        return response()->json(['data' => ['message' => 'Please check your email to reset your password.']], 200);
     }
 
     /**
-     * Create new P assword
+     * Create new Password
      *
      * @bodyParam password string required The new password
      *
@@ -143,7 +143,7 @@ class AuthController extends Controller
         $user = User::newPasswordByResetToken($token, $request->input('password'));
 
         if ($user) {
-            return response()->json(['data' => ['message' => 'Password has been changed.']]);
+            return response()->json(['data' => ['message' => 'Password has been changed.']], 200);
         } else {
             return response()->json(['data' => ['message' => 'Invalid password reset token']], 400);
         }
