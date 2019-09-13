@@ -33,8 +33,8 @@ class S3Controller extends Controller
         ]);
         
         $input = $request->all();
-        $type = substr($input['file'], 5, strpos($input['file'], ';')-5);
-        $base64_str = substr($input['file'], strpos($input['file'], ",") + 1);
+        $type = substr($input['image'], 5, strpos($input['image'], ';')-5);
+        $base64_str = substr($input['image'], strpos($input['image'], ",") + 1);
         $image = base64_decode($base64_str);
         $data = getimagesizefromstring($image);
         $imageFileName = time() . '' .image_type_to_extension($data[2]);
@@ -74,7 +74,7 @@ class S3Controller extends Controller
         ]);
         
         $input = $request->all();
-        $image = $input['file'];
+        $image = $input['image'];
         $extension = $image->getClientOriginalExtension();
         $type = $image->getMimeType();
         $imageFileName = time() . '.' .$extension;

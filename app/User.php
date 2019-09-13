@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use Laravel\Lumen\Auth\Authorizable;
 use Spatie\Permission\Traits\HasRoles;
+use App\Profile;
 
 class User extends Model implements AuthenticatableContract, AuthorizableContract
 {
@@ -43,8 +44,9 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
      * The attributes appended to the model's JSON form.
      *
      * @var array
+     * @var string
      */
-    protected $appends = ['roleNames'];
+    protected $appends = ['roleNames', 'image'];
 
     /**
      * Get the roles of the user
@@ -54,6 +56,16 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
     public function getRoleNamesAttribute()
     {
         return $this->roles->pluck('name');
+    }
+
+    /**
+     * Get the image of the user
+     * 
+     * @return string
+     */
+    public function getImageAttribute()
+    {
+        return $this->profile->image;
     }
 
     /**
@@ -169,5 +181,9 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
     {
         $this->password = Hash::make($password);
         return $this->save();
+    }
+
+    public function profile(){
+        return $this->hasOne('App\Profile', 'user_id');
     }
 }

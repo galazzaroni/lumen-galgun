@@ -5,9 +5,11 @@ namespace App\Http\Controllers;
 use App\Http\Requests\LoginRequest;
 use App\Http\Requests\RecoverPasswordRequest;
 use App\Http\Requests\RegisterRequest;
+use App\Http\Controllers\S3\S3Controller;
 use App\Mail\PasswordReset;
 use App\Mail\Welcome;
 use App\User;
+use App\Profile;
 use Exception;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -75,7 +77,19 @@ class AuthController extends Controller
         $lastname = $request->input('lastname');
 
         $user = User::createFromValues($name, $lastname, $email, $password);
+        
+        if ($request->input('image'))
+        {
+            $s3 = new S3Controller;
+            $s3 = $s3->store_64($request);
+            $image = $s3->getData()->data;
 
+            $profile = new Profile;
+            $profile->user_id = $user->id;        
+            $profile->image = $image->url;
+            $profile->save();
+        }
+        
         Mail::to($user)->send(new Welcome($user));
 
         return response()->json(['data' => ['message' => 'Account created. Please verify via email.']], 200);

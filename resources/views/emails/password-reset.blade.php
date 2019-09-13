@@ -3,7 +3,7 @@
 <head>
 </head>
 <body>
-    <img src="{{url('/images/Galgun_logo01.png')}}" alt="Galgun" width="50%" height="50%">
+    <img src="http://18.223.118.94/docs/images/logo.png" alt="Galgun" width="102" height="102">
     <hr>
     {{ trans('messages.password_reset_text', ['website' => config('constants.website_name')]) }}
     <br/>
