@@ -5,11 +5,11 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 
-class Profile extends Model
+class Place extends Model
 {
-    protected $table = 'profiles';
+    protected $table = 'places';
 
-    public function profile(){
+    public function place(){
         return $this->hasMany('App\User', 'id');
     }
 }

@@ -184,6 +184,12 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
     }
 
     public function profile(){
-        return $this->hasOne('App\Profile', 'user_id');
+        //return $this->belongsTo('App\Profile', 'user_id');
+        return $this->belongsTo('App\Profile');
+    }
+
+    public function place(){
+        //return $this->belongsTo('App\Profile', 'user_id');
+        return $this->belongsTo('App\Place');
     }
 }

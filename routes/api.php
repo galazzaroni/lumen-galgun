@@ -45,7 +45,7 @@ $router->group(['prefix' => 'auth', 'as' => 'auth'], function (Router $router) {
 
 $router->post('/s3/upload64', 'S3\S3Controller@store_64');
 $router->post('/s3/upload', 'S3\S3Controller@store_file');
-$router->post('/profile/profileByID', 'Profile\ProfileController@getProfile');
+$router->post('/profile/profileByID', 'Profile\ProfileController@profileByID');
 
 /* Protected Routes */
 $router->group(['middleware' => 'auth'], function (Router $router) {
