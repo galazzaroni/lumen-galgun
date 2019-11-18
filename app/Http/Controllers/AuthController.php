@@ -109,10 +109,12 @@ class AuthController extends Controller
         $user = User::verifyByToken($token);
 
         if (!$user) {
-            return response()->json(['data' => ['message' => 'Invalid verification token']], 400);
+            //return response()->json(['data' => ['message' => 'Invalid verification token']], 400);
+            return view('auth.verify_error');    
         }
 
-        return response()->json(['data' => ['message' => 'Account has been verified']], 200);
+        //return response()->json(['data' => ['message' => 'Account has been verified']], 200);
+        return view('auth.verify_success');
     }
 
     /**

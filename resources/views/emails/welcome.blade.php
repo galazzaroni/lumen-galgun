@@ -3,7 +3,7 @@
 <head>
 </head>
 <body>
-    <img src="http://18.223.118.94/docs/images/logo.png" alt="Galgun">
+    <img src="images/Galgun_logo05.png" height="100" width="100" alt="Galgun">
     <h2>
         {{ trans('messages.welcome_header', ['website' => config('constants.website_name'), 'name' => $name]) }}.
     </h2>

@@ -21,7 +21,7 @@ class S3Controller extends Controller
      * @param RegisterRequest $request
      * @return JsonResponse
      */
-    public function store_64(Request $request)
+    public static function store_64($image)
     {
         $s3Client = new S3Client([
             'region' => 'us-east-2',
@@ -32,9 +32,9 @@ class S3Controller extends Controller
             ]
         ]);
         
-        $input = $request->all();
-        $type = substr($input['image'], 5, strpos($input['image'], ';')-5);
-        $base64_str = substr($input['image'], strpos($input['image'], ",") + 1);
+        //$input = $request->all();
+        $type = substr($image, 5, strpos($image, ';')-5);
+        $base64_str = substr($image, strpos($image, ",") + 1);
         $image = base64_decode($base64_str);
         $data = getimagesizefromstring($image);
         $imageFileName = time() . '' .image_type_to_extension($data[2]);
@@ -47,11 +47,7 @@ class S3Controller extends Controller
             'ACL' => 'public-read'
         ]);
 
-        return response()->json([
-            'data' => ['message' => 'Image uploaded succesfully',
-                       'url' => 'https://s3-galgun.s3.us-east-2.amazonaws.com/'.$imageFileName
-                      ]
-        ], 200);
+        return response()->json(['url' => 'https://s3-galgun.s3.us-east-2.amazonaws.com/'.$imageFileName], 200);
     }
 
     /**
@@ -62,7 +58,7 @@ class S3Controller extends Controller
      * @param RegisterRequest $request
      * @return JsonResponse
      */
-    public function store_file(Request $request)
+    public static function store_file($image)
     {
         $s3Client = new S3Client([
             'region' => 'us-east-2',
@@ -73,8 +69,8 @@ class S3Controller extends Controller
             ]
         ]);
         
-        $input = $request->all();
-        $image = $input['image'];
+        //$input = $request->all();
+        //$image = $image;
         $extension = $image->getClientOriginalExtension();
         $type = $image->getMimeType();
         $imageFileName = time() . '.' .$extension;
@@ -88,10 +84,6 @@ class S3Controller extends Controller
             'ACL' => 'public-read'
         ]);
 
-        return response()->json([
-            'data' => ['message' => 'Image uploaded succesfully', 
-                       'url' => 'https://s3-galgun.s3.us-east-2.amazonaws.com/'.$imageFileName
-                      ]
-        ], 200);
+        return response()->json(['url' => 'https://s3-galgun.s3.us-east-2.amazonaws.com/'.$imageFileName], 200);
     }
 }

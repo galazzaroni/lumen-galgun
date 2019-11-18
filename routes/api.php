@@ -4,8 +4,11 @@
 use Laravel\Lumen\Routing\Router;
 
 /* Public Routes */
-$router->get('/', function () {
+/*$router->get('/', function () {
     return response()->json(['message' => 'Welcome to Lumen API Starter']);
+});*/
+$router->get('/', function() {
+    return view('/emails/welcome', ['name' => 'Gonzalo', 'token' => 'saraza']);
 });
 
 /* Auth Routes */
@@ -46,6 +49,7 @@ $router->group(['prefix' => 'auth', 'as' => 'auth'], function (Router $router) {
 $router->post('/s3/upload64', 'S3\S3Controller@store_64');
 $router->post('/s3/upload', 'S3\S3Controller@store_file');
 $router->post('/profile/profileByID', 'Profile\ProfileController@getProfile');
+$router->post('/profile/addProfile', 'Profile\ProfileController@addProfile');
 
 /* Protected Routes */
 $router->group(['middleware' => 'auth'], function (Router $router) {
