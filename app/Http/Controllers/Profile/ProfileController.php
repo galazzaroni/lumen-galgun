@@ -7,12 +7,14 @@ use Illuminate\Http\Request;
 use Carbon\Carbon;
 use App\User;
 use App\Profile;
+use App\Place;
+use Illuminate\Support\Facades\DB;
 
 use Laravel\Lumen\Routing\Controller as BaseController;
 
 class ProfileController extends Controller
 {
-    public function getProfile(Request $request)
+    public function profileByID(Request $request)
     {
         $user = $request->input('user');
         $profile = User::where('id', $user)->get();

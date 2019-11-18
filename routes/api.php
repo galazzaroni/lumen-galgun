@@ -48,8 +48,12 @@ $router->group(['prefix' => 'auth', 'as' => 'auth'], function (Router $router) {
 
 $router->post('/s3/upload64', 'S3\S3Controller@store_64');
 $router->post('/s3/upload', 'S3\S3Controller@store_file');
+<<<<<<< HEAD
 $router->post('/profile/profileByID', 'Profile\ProfileController@getProfile');
 $router->post('/profile/addProfile', 'Profile\ProfileController@addProfile');
+=======
+$router->post('/profile/profileByID', 'Profile\ProfileController@profileByID');
+>>>>>>> c7d0f07ff8e93399cf6bb142096f4e9e7bd92815
 
 /* Protected Routes */
 $router->group(['middleware' => 'auth'], function (Router $router) {

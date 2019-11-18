@@ -27,8 +27,8 @@ class S3Controller extends Controller
             'region' => 'us-east-2',
             'version' => 'latest',
             'credentials' => [
-                'key'    => 'AKIA5QDANSEOP4IS7GCP',
-                'secret' => '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',
+                'key'    => '',
+                'secret' => '',
             ]
         ]);
         
@@ -64,8 +64,8 @@ class S3Controller extends Controller
             'region' => 'us-east-2',
             'version' => 'latest',
             'credentials' => [
-                'key'    => 'AKIA5QDANSEOP4IS7GCP',
-                'secret' => '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',
+                'key'    => '',
+                'secret' => '',
             ]
         ]);
         
